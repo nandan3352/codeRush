@@ -18,7 +18,7 @@ const AuthPage: React.FC<AuthPageProps> = () => {
 
 	useEffect(() => {
 		if (user) router.push("/");
-        // console.log(user);
+         
 		if (!loading && !user) setPageLoading(false);
 	}, [user, router, loading]);
 

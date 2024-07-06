@@ -23,16 +23,9 @@ const ProblemsTable: React.FC<ProblemsTableProps> = ({ setLoadingProblems }) => 
 	const problems = useGetProblems(setLoadingProblems);
 	const solvedProblems = useGetSolvedProblems();
 	const starredProblems = useGetStarredProblems();
-	console.log("solvedProblems", solvedProblems);
+	// console.log("solvedProblems", solvedProblems);
    
-	// useEffect(() => {
-	// 	const handleEsc = (e: KeyboardEvent) => {
-	// 		if (e.key === "Escape") closeModal();
-	// 	};
-	// 	window.addEventListener("keydown", handleEsc);
-
-	// 	return () => window.removeEventListener("keydown", handleEsc);
-	// }, []);
+	
 
 	return (
 		<>
