@@ -12,7 +12,6 @@ import { toast } from "react-toastify";
 import { problems } from "@/utils/problems";
 import { useRouter } from "next/router";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
-import useLocalStorage from "@/hooks/useLocalStorage";
 
 type PlaygroundProps = {
 	problem: Problem;
@@ -22,22 +21,12 @@ type PlaygroundProps = {
 
 export interface ISettings {
 	fontSize: string;
-	settingsModalIsOpen: boolean;
 	dropdownIsOpen: boolean;
 }
 
 const Playground: React.FC<PlaygroundProps> = ({ problem, setSuccess, setSolved }) => {
 	const [activeTestCaseId, setActiveTestCaseId] = useState<number>(0);
 	let [userCode, setUserCode] = useState<string>(problem.starterCode);
-
-	const [fontSize, setFontSize] = useLocalStorage("lcc-fontSize", "16px");
-
-	const [settings, setSettings] = useState<ISettings>({
-		fontSize: fontSize,
-		settingsModalIsOpen: false,
-		dropdownIsOpen: false,
-	});
-
 	const [user] = useAuthState(auth);
 	const {
 		query: { pid },
@@ -125,8 +114,7 @@ const Playground: React.FC<PlaygroundProps> = ({ problem, setSuccess, setSolved 
 
 	return (
 		<div className='flex flex-col bg-dark-layer-1 relative overflow-x-hidden'>
-			<PreferenceNav settings={settings} setSettings={setSettings} />
-
+<PreferenceNav/>
 			<Split className='h-[calc(100vh-94px)]' direction='vertical' sizes={[60, 40]} minSize={60}>
 				<div className='w-full overflow-auto'>
 					<CodeMirror
@@ -134,7 +122,7 @@ const Playground: React.FC<PlaygroundProps> = ({ problem, setSuccess, setSolved 
 						theme={vscodeDark}
 						onChange={onChange}
 						extensions={[javascript()]}
-						style={{ fontSize: settings.fontSize }}
+						style={{ fontSize: 16 }}
 					/>
 				</div>
 				<div className='w-full px-5 overflow-auto'>
@@ -142,7 +130,7 @@ const Playground: React.FC<PlaygroundProps> = ({ problem, setSuccess, setSolved 
 					<div className='flex h-10 items-center space-x-6'>
 						<div className='relative flex h-full flex-col justify-center cursor-pointer'>
 							<div className='text-sm font-medium leading-5 text-white'>Testcases</div>
-							<hr className='absolute bottom-0 h-0.5 w-full rounded-full border-none bg-white' />
+							<hr className='absolute bottom-0 h-0.7 w-full rounded-full border-none bg-white' />
 						</div>
 					</div>
 

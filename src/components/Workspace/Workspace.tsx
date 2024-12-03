@@ -1,18 +1,14 @@
 import { useState } from "react";
 import Split from "react-split";
-// import ProblemDescription from "./ProblemDescription/ProblemDescription";
 import ProblemDescription from "./ProblemDescription/ProblemDescription";
 import Playground from "./Playground/Playground";
-// import {Playgr}
 import { Problem } from "@/utils/types/problem";
-import useWindowSize from "@/hooks/useWindowSize";
 
 type WorkspaceProps = {
 	problem: Problem;
 };
 
 const Workspace: React.FC<WorkspaceProps> = ({ problem }) => {
-	const { width, height } = useWindowSize();
 	const [success, setSuccess] = useState(false);
 	const [solved, setSolved] = useState(false);
 
@@ -22,7 +18,6 @@ const Workspace: React.FC<WorkspaceProps> = ({ problem }) => {
 			<div className='bg-dark-fill-2'>
 				<Playground problem={problem} setSuccess={setSuccess} setSolved={setSolved} />
 			</div>
-            kii
 		</Split>
 	);
 };

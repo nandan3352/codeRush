@@ -8,7 +8,6 @@ import { BsList } from "react-icons/bs";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Logout from "../Buttons/Logout";
 import { useSetRecoilState } from "recoil";
-import Timer from "../Timer/Timer";
 import { authModalState } from "@/atoms/authModalAtom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Image from "next/image";
@@ -91,7 +90,6 @@ const Topbar:React.FC<TopbarProps> = ({problemPage}) => {
 						>
     <button className='bg-dark-fill-3 py-1 px-2 cursor-pointer rounded '>Sign In</button>
 	</Link>)}
-    {user && problemPage && <Timer />}
     {user && (
 						<div className='cursor-pointer group relative'>
 							<Image src='/avatar.png' alt='Avatar' width={30} height={30} className='rounded-full' />
