@@ -1,8 +1,6 @@
 import { auth } from "@/firebase/firebase";
 import React from 'react';
-// import React from 'react';
 import Link from "next/link";
-// import Image from "next/Image";
 import { useRouter } from "next/router";
 import { BsList } from "react-icons/bs";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -11,7 +9,6 @@ import { useSetRecoilState } from "recoil";
 import { authModalState } from "@/atoms/authModalAtom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Image from "next/image";
-// import { problems } from "@/utils/problems";
 import { problems } from "@/utils/problems";
 import { Problem } from "@/utils/types/problem";
 type TopbarProps = {
@@ -21,7 +18,6 @@ type TopbarProps = {
 const Topbar:React.FC<TopbarProps> = ({problemPage}) => {
     const [user] = useAuthState(auth);
     const setAuthModalState = useSetRecoilState(authModalState);
-    // return <div>Have a good coding</div>
     const router = useRouter();
 
 	const handleProblemChange = (isForward: boolean) => {
@@ -46,7 +42,6 @@ const Topbar:React.FC<TopbarProps> = ({problemPage}) => {
 		<nav className='relative flex h-[50px] w-full shrink-0 items-center px-5 bg-dark-layer-1 text-dark-gray-7'>
 			<div className={`flex w-full items-center justify-between ${!problemPage ? "max-w-[1200px] mx-auto" : ""}`}>
 				<Link href='/' className='h-[22px] flex-1'>
-					{/* <Image src='/avatar.png' alt='Logo' height={100} width={100} /> */}
 				</Link>
                 {problemPage && (
 					<div className='flex items-center gap-4 flex-1 justify-center'>
@@ -74,16 +69,7 @@ const Topbar:React.FC<TopbarProps> = ({problemPage}) => {
 					</div>
 				)}
      <div className='flex items-center space-x-4 flex-1 justify-end'>
-					{/* <div>
-	 					<a
-							href='https://www.buymeacoffee.com/burakorkmezz'
-							target='_blank'
-							rel='noreferrer'
-							className='bg-dark-fill-3 py-1.5 px-3 cursor-pointer rounded text-brand-orange hover:bg-dark-fill-2'
-						>
-							Premium
-						</a>
-					</div> */}
+					
                     {!user && (<Link 
                     href='/auth'
                     onClick={() => setAuthModalState((prev) => ({ ...prev, isOpen: true, type: "login" }))}
@@ -93,7 +79,6 @@ const Topbar:React.FC<TopbarProps> = ({problemPage}) => {
     {user && (
 						<div className='cursor-pointer group relative'>
 							<Image src='/avatar.png' alt='Avatar' width={30} height={30} className='rounded-full' />
-                            {/* <Image src='/avatar.png' alt='Avatar' width={30} height={30} className='rounded-full' /> */}
                             <div
 								className='absolute top-10 left-2/4 -translate-x-2/4  mx-auto bg-dark-layer-1 text-dark-blue-s p-2 rounded shadow-lg 
 								z-40 group-hover:scale-100 scale-0 
